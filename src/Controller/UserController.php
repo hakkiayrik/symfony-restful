@@ -11,12 +11,19 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/api/user", name="app_user")
+     * @param UserInterface $user
+     * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(UserInterface $user): JsonResponse
     {
         return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/UserController.php',
+            'status' => 1,
+            'data' => [
+                'id' => $user->getId(),
+                'first_name' => $user->getFirstName(),
+                'last_name' => $user->getLastName(),
+                'email' => $user->getEmail(),
+            ]
         ]);
     }
 

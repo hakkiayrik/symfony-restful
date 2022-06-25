@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "b461c85e-1ecb-4051-9807-9438cfc64991",
+		"name": "symfony_restful",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21621645"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"emilio30@feeney.com\",\"password\":\"^/5*#iaGg9#_stG,\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login_check",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTYxNjE1ODYsImV4cCI6MTY1NjE2NTE4Niwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoia2FpbGVlNTJAbWl0Y2hlbGwuY29tIn0.T9kiqFwoIJtyHtHZwnjYHLzJWdPvqYupQWf4wUx57GpDNxwvhEx478pMrL0Xe5E8atCstKonA_pkq-oa65MGySq_JV7Xo6ifLZz22iMJsCMHeiJjMooNyBS4j_jtf4MatGXYxHlhTX15RLs-PZUCM0cN9BR2jibbr9Y2B8yDx3qCrhsfZTwIP1jRWzlQOys8Phytcmu9Q4hCb1AFrJFSj28n6SouIBvOmASwbrdO925kFtYwfzie1RrftH3qKXsAvSs38zT3kfdhJWgNfjjRxsjmgcbZ692lCoILj8cdFwfL57W8BKvhQj3ACeN7WHtAMGPYocDcWjmDxxGYTiDtGQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\": \"1\",\r\n    \"quantity\": 12,\r\n    \"address\": {\r\n        \"name\": \"Ev\",\r\n        \"district\": \"Kartal\",\r\n        \"city\": \"İstanbul\",\r\n        \"country\": \"Türkiye\",\r\n        \"detail\": \"Pendik/İstanbul\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/order/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order",
+						"create"
+					],
+					"query": [
+						{
+							"key": "barcode",
+							"value": "0676155734734",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Order",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTYxNTk2MDYsImV4cCI6MTY1NjE2MzIwNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoia2FpbGVlNTJAbWl0Y2hlbGwuY29tIn0.PtUvdyuOxUvrvWpCRptEZFLn35kFjrF65UY8AyTvCJNq-056I9Q2Z5_Dkju0C0W398hOp7OsnZkU1TfsKSfJQ5d_gdIrC5e-vU9CvgmmDXiBMbMMCfFd2ngGBcb21alf-w0ieREXxYuvx82AUgrxZvBJ49tADVSAJDunvurqy4XwAgQXLKaf-7bjEB96kYSR5pQNj8ycstaUj77_SE96JDg2jRx6UMIjyKcn8wNGSPfRxivmPTxJJpxKxl-NYkwh2QaatoWxYmbV2hlK3gW6O6okOsmqEwVeQ988q4qRFG2Gm1DQ9UFOvsiS6geGDR0893s9YOJ3wDaUrEGkwHJrOQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/order/show/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order",
+						"show",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTYxNjM0MzcsImV4cCI6MTY1NjE2NzAzNywicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoiZW1pbGlvMzBAZmVlbmV5LmNvbSJ9.n78_cyEjRS0_rvIqlFh0TfWb1cOg4AXT9pLj5mkZYFX8ZgYEjN4GHHY-n52-_zWUSOE5ufEttCvzXMyB6aYZCdpkTDOqzN7Jiyjv6yip6oce625sVHIYtsiE2SvZ39DJdFjJbAwOVaz5NpEAfke1RbV4rEO8KBaqlKxmkRj4eEWCLngB4sDgsnTABYXQv8U4zX4r6zPBHnN6FHN4DOruQDHQkm4g13EaeQ5tmN0ahlM0sB9cjGc0_Fq5wgVQcY1Hj9PDwzLRLJiKJ621YzlVfb_n4F_PM53C-gl0Gl0fojeQUOvM58civPrlgpqEaXtKYoj-l-BTSYRdhXOuR278VQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 15,\r\n    \"address_id\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/order/update/1?id=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"order",
+						"update",
+						"1"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTYxNjM0MzcsImV4cCI6MTY1NjE2NzAzNywicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoiZW1pbGlvMzBAZmVlbmV5LmNvbSJ9.n78_cyEjRS0_rvIqlFh0TfWb1cOg4AXT9pLj5mkZYFX8ZgYEjN4GHHY-n52-_zWUSOE5ufEttCvzXMyB6aYZCdpkTDOqzN7Jiyjv6yip6oce625sVHIYtsiE2SvZ39DJdFjJbAwOVaz5NpEAfke1RbV4rEO8KBaqlKxmkRj4eEWCLngB4sDgsnTABYXQv8U4zX4r6zPBHnN6FHN4DOruQDHQkm4g13EaeQ5tmN0ahlM0sB9cjGc0_Fq5wgVQcY1Hj9PDwzLRLJiKJ621YzlVfb_n4F_PM53C-gl0Gl0fojeQUOvM58civPrlgpqEaXtKYoj-l-BTSYRdhXOuR278VQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTYxNjM0MzcsImV4cCI6MTY1NjE2NzAzNywicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoiZW1pbGlvMzBAZmVlbmV5LmNvbSJ9.n78_cyEjRS0_rvIqlFh0TfWb1cOg4AXT9pLj5mkZYFX8ZgYEjN4GHHY-n52-_zWUSOE5ufEttCvzXMyB6aYZCdpkTDOqzN7Jiyjv6yip6oce625sVHIYtsiE2SvZ39DJdFjJbAwOVaz5NpEAfke1RbV4rEO8KBaqlKxmkRj4eEWCLngB4sDgsnTABYXQv8U4zX4r6zPBHnN6FHN4DOruQDHQkm4g13EaeQ5tmN0ahlM0sB9cjGc0_Fq5wgVQcY1Hj9PDwzLRLJiKJ621YzlVfb_n4F_PM53C-gl0Gl0fojeQUOvM58civPrlgpqEaXtKYoj-l-BTSYRdhXOuR278VQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

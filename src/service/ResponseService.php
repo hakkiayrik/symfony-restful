@@ -38,18 +38,7 @@ class ResponseService
      *
      * @return JsonResponse
      */
-    public function error($data, $headers = [])
-    {
-        return new JsonResponse($data, $this->getStatusCode(), $headers);
-    }
-
-    /**
-     * @param array $data
-     * @param array $headers
-     *
-     * @return JsonResponse
-     */
-    public function success($data, $headers = [])
+    public function response(array $data, $headers = [])
     {
         return new JsonResponse($data, $this->getStatusCode(), $headers);
     }

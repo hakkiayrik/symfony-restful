@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Address;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @extends ServiceEntityRepository<Address>
@@ -21,14 +22,17 @@ class AddressRepository extends ServiceEntityRepository
         parent::__construct($registry, Address::class);
     }
 
-    public function add(Address $entity, bool $flush = false): void
+    public function add(Address $entity, array $addressData,UserInterface $user): void
     {
+        $entity->setUser($user);
+        $entity->setName($addressData['name']);
+        $entity->setDistrict($addressData['district']);
+        $entity->setCity($addressData['city']);
+        $entity->setCountry($addressData['country']);
+        $entity->setDetail($addressData['detail']);
 
         $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->flush();
     }
 
     public function get(int $addressId): array

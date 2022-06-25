@@ -6,25 +6,22 @@ use App\Entity\Address;
 use App\Entity\Order;
 use App\Entity\Product;
 use App\Repository\OrderRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Service\ValidationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class OrderController extends AbstractController
 {
     private $orderRepository;
-    private $validator;
-    private $doctrine;
+    private $validationService;
 
-    public function __construct(OrderRepository  $orderRepository, ValidatorInterface $validator, ManagerRegistry $doctrine)
+    public function __construct(OrderRepository  $orderRepository, ValidationService $validationService)
     {
         $this->orderRepository = $orderRepository;
-        $this->validator = $validator;
-        $this->doctrine = $doctrine;
+        $this->validationService = $validationService;
     }
 
     /**
@@ -39,42 +36,26 @@ class OrderController extends AbstractController
         $requestData = json_decode($request->getContent(), true);
         $entityManager = $this->getDoctrine()->getManager();
 
-        if( isset($requestData['address_id']) ){
-            $addressId = $requestData['address']['id'];
-            $addressRepository = $this->getDoctrine()->getRepository(Address::class);
-            $address = $addressRepository->find([$addressId]);
-        } else {
-            if(isset($requestData['address']) && is_array($requestData['address'])) {
-                $address = new Address();
-                $address->setUser($user);
-                $address->setName($requestData['address']['name']);
-                $address->setDistrict($requestData['address']['district']);
-                $address->setCity($requestData['address']['city']);
-                $address->setCountry($requestData['address']['country']);
-                $address->setDetail($requestData['address']['detail']);
+        $validate = $this->validationService->createDataValidation($requestData);
 
-                $entityManager->persist($address);
-                $entityManager->flush();
-
-                $addressId = $address->getId();
-            } else {
-                return $this->json([
-                    'status' => 0,
-                    'message' => 'Adres bilgileri eksik olduğundan sipariş oluşturulamadı!',
-                ]);
-            }
+        if(!$validate['status']) {
+            return $this->json($validate);
         }
 
-        if( !isset($requestData['product_id']) || empty($requestData['product_id'] ) ) {
-            return $this->json([
-                'status' => 0,
-                'message' => 'Ürün id olmadığından sipariş oluşturulamadı!',
-            ]);
+        $addressRepository = $this->getDoctrine()->getRepository(Address::class);
+
+        if( isset($requestData['address_id']) ){
+            $addressId = $requestData['address_id'];
+            $address = $addressRepository->find($addressId);
         } else {
-            $product = $this->getDoctrine()->getRepository(Product::class)->find((int) $requestData['product_id']);
+            $address = new Address();
+            $addressRepository->add($address, $requestData['address'], $user);
         }
 
         $shippingDate = date('Y-m-d h:i:s', strtotime('+ 2 days', strtotime(date('Y-m-d h:i:s'))));
+
+        $productRepository = $this->getDoctrine()->getRepository(Product::class);
+        $product = $productRepository->find($requestData['product_id']);
 
         $order = new Order();
         $order->setUser($user);
@@ -86,19 +67,34 @@ class OrderController extends AbstractController
         $order->setCreatedAt(new \DateTime("now"));
 
         $entityManager->persist($order);
+        $entityManager->flush();
+
         if($order->getId()) {
             $productQuantity = $product->getQuantity();
             $product->setQuantity($productQuantity - $requestData['quantity']);
+            $entityManager->persist($product);
+            $entityManager->flush();
         } else {
-
+            return $this->json([
+                'status' => 0,
+                'message' => 'Sipariş Oluşturulamadı!',
+            ]);
         }
 
+        $addressData = [
+            'id' => $order->getAddress()->getId(),
+            'name' => $order->getAddress()->getName(),
+            'district' => $order->getAddress()->getDistrict(),
+            'city' => $order->getAddress()->getCity(),
+            'country' => $order->getAddress()->getCountry(),
+            'detail' => $order->getAddress()->getDetail(),
+        ];
         $responseData = [
             'order_code' => $order->getId(),
-            'product_id' => $order->getProductId(),
+            'product_id' => $order->getProduct()->getId(),
             'quantity' => $order->getQuantity(),
             'shipping_date' => $order->getShippingDate(),
-            'address' => $address
+            'address' => $addressData
         ];
 
         return $this->json([
@@ -130,33 +126,35 @@ class OrderController extends AbstractController
             ]);
         }
 
-        if($order->getShippingDate() < date('Y-m-d H:i:s')) {
+        //ShippingDate kontrolü
+        /*$obj = new \DateTime();
+        if(date('Y-m-d', $order->getShippingDate()) < date('Y-m-d')) {
             return $this->json([
                 'status' => 0,
                 'message' => 'Ürün kargolanma süresi geçtiği için bu sipariş güncellenemez!',
             ]);
+        }*/
+
+        $validate = $this->validationService->updateDataValidation($requestData);
+
+        if(!$validate['status']) {
+            return $this->json($validate);
         }
+
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($order->getProduct()->getId());
+
+        $addressRepository = $this->getDoctrine()->getRepository(Address::class);
 
         if( isset($requestData['address_id']) ){
-            $addressId = $requestData['address']['id'];
-            $addressRepository = $this->getDoctrine()->getRepository(Address::class);
-            $address = $addressRepository->findOneBy($addressId);
+            $addressId = $requestData['address_id'];
+            $address = $addressRepository->find($addressId);;
         } else {
             $address = new Address();
-            $address->setUserId($user->getId());
-            $address->setName($requestData['address']['name']);
-            $address->setDistrict($requestData['address']['district']);
-            $address->setCity($requestData['address']['city']);
-            $address->setCountry($requestData['address']['country']);
-            $address->setDetail($requestData['address']['detail']);
-
-            $entityManager->persist($address);
-            $entityManager->flush();
-
-            $addressId = $address->getId();
+            $addressRepository->add($address, $requestData['address'], $user);
         }
 
-        $shippingDate = date('Y-m-d h:i:s', strtotime('+ 2 days', strtotime(date('Y-m-d h:i:s'))));
+        $productQuantity = $product->getQuantity();
+        $orderOldQuantity = $order->getQuantity();
 
         $order->setAddress($address);
         $order->setQuantity($requestData['quantity']);
@@ -165,14 +163,37 @@ class OrderController extends AbstractController
         $entityManager->persist($order);
         $entityManager->flush();
 
-        //Ürün stoğundan azaltma işlemi
+        //Adet düzenleme yapıldığında ürün adedi tekrar güncelliyoruz
+        if($orderOldQuantity > $requestData['quantity']) {
+            //Eğer düzenlenen adet miktarı sipariş deki tutardan küçükse aradaki farkı tekrardan ürüne iade ediyoruz
+            $product->setQuantity($productQuantity + ($orderOldQuantity - (int)$requestData['quantity']));
+        } else if($requestData['quantity'] > $orderOldQuantity) {
+            //Eğer düzenlenen adet miktarı sipariş deki tutardan büyükse aradaki farkı ürün miktarından çıkartıyoruz
+            $product->setQuantity($productQuantity - ((int)$requestData['quantity'] - $orderOldQuantity));
+        }
+        $entityManager->persist($product);
+        $entityManager->flush();
 
+
+        $addressData = [
+            'id' => $order->getAddress()->getId(),
+            'name' => $order->getAddress()->getName(),
+            'district' => $order->getAddress()->getDistrict(),
+            'city' => $order->getAddress()->getCity(),
+            'country' => $order->getAddress()->getCountry(),
+            'detail' => $order->getAddress()->getDetail(),
+        ];
+        $productData = [
+            'id' => $order->getProduct()->getId(),
+            'name' => $order->getProduct()->getName(),
+            'barcode' => $order->getProduct()->getBarcode(),
+        ];
         $responseData = [
             'order_code' => $order->getId(),
-            'product_id' => $order->getProductId(),
+            'product_id' => $productData,
             'quantity' => $order->getQuantity(),
             'shipping_date' => $order->getShippingDate(),
-            'address' => $address
+            'address' => $addressData
         ];
 
         return $this->json([
@@ -184,15 +205,53 @@ class OrderController extends AbstractController
 
     /**
      * @Route("/api/order/show/{id}", name="order_show")
-     * @param Order $order
+     * @param int $id
      * @return JsonResponse
      */
-    public function show(Order $order): JsonResponse
+    public function show(int $id): JsonResponse
     {
+        if(is_null($id)) {
+            return $this->json([
+                'status' => 0,
+                'message' => 'Sipariş id değeri eksik!',
+            ]);
+        }
+
+        $order = $this->orderRepository->find($id);
+        if(is_null($order) || !is_object($order)) {
+            return $this->json([
+                'status' => 0,
+                'message' => 'Sipariş bulunamadı!',
+            ]);
+        }
+
+        $addressData = [
+            'id' => $order->getAddress()->getId(),
+            'name' => $order->getAddress()->getName(),
+            'district' => $order->getAddress()->getDistrict(),
+            'city' => $order->getAddress()->getCity(),
+            'country' => $order->getAddress()->getCountry(),
+            'detail' => $order->getAddress()->getDetail(),
+        ];
+
+        $productData = [
+            'id' => $order->getProduct()->getId(),
+            'name' => $order->getProduct()->getName(),
+            'barcode' => $order->getProduct()->getBarcode(),
+        ];
+
+        $orderData = [
+            "order_id" => $order->getId(),
+            "product" => $productData,
+            "quantity" => $order->getQuantity(),
+            "shipping_date" => $order->getShippingDate(),
+            "address" => $addressData,
+        ];
+
         return $this->json([
             'status' => 1,
             'message' => 'İşlem başarılı',
-            'data' => $order->getId(),
+            'data' => $orderData,
         ]);
     }
 

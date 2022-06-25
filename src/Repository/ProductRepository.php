@@ -30,6 +30,15 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+    public function checkQuantity(Product $product, $quantity)
+    {
+        if($product->getQuantity() < $quantity) {
+           return false;
+        }
+
+       return true;
+    }
+
     public function remove(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

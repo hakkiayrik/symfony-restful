@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Order;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 /**
  * @extends ServiceEntityRepository<Order>
@@ -28,6 +30,15 @@ class OrderRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function getAll(UserInterface $user): array
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.user_id = :user_id')
+            ->setParameter('user_id', $user->getId())
+            ->getQuery()
+            ->getArrayResult();
     }
 
     public function remove(Order $entity, bool $flush = false): void

@@ -23,11 +23,17 @@ class AddressRepository extends ServiceEntityRepository
 
     public function add(Address $entity, bool $flush = false): void
     {
+
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function get(int $addressId): array
+    {
+        return $this->findBy(["id" => $addressId]);
     }
 
     public function remove(Address $entity, bool $flush = false): void

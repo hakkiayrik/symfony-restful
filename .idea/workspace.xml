@@ -1,15 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="222b0da3-f006-42a0-b771-76d87dadeea9" name="Default Changelist" comment="" />
+    <list default="true" id="222b0da3-f006-42a0-b771-76d87dadeea9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220625092625.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/ResponseSerivce.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony-restful.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony-restful.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20220623200951.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20220623202020.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AddressFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AddressFixture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ProductFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ProductFixture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Address.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AddressRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AddressRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/OrderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OrderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -72,19 +119,39 @@
       <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/password-hasher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
     </include_path>
   </component>
   <component name="ProjectId" id="2AzNnxCSAjSvl3ZRml01NBNViws" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PhpstormProjects/symfony-restful" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -94,6 +161,17 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RunManager">
+    <configuration name="symfony-restful" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.symfony-restful" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -102,17 +180,66 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656008625137</updated>
-      <workItem from="1656008626322" duration="9839000" />
+      <workItem from="1656008626322" duration="17922000" />
+      <workItem from="1656030153843" duration="15613000" />
+      <workItem from="1656112575462" duration="34407000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="93" y="100" width="1094" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1656020577445">
+    <state x="404" y="510" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1656031276067">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="93" y="100" width="1094" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656020577445" />
+    <state x="404" y="510" key="#com.intellij.fileTypes.FileTypeChooser/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656031276067" />
+    <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1656140593203">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656140593203" />
+    <state x="423" y="617" key="ComposerInitDialogKey" timestamp="1656109582597">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="423" y="617" key="ComposerInitDialogKey/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656109582597" />
+    <state x="420" y="450" key="FileChooserDialogImpl" timestamp="1656026148294">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="420" y="450" key="FileChooserDialogImpl/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656026148294" />
+    <state x="1114" y="628" key="NewPhpFileDialog" timestamp="1656149931343">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1114" y="628" key="NewPhpFileDialog/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656149931343" />
+    <state x="1075" y="407" key="RollbackChangesDialog" timestamp="1656110381389">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1075" y="407" key="RollbackChangesDialog/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656110381389" />
+    <state x="93" y="100" width="1952" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1656114592732">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="93" y="100" width="1952" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656114592732" />
+    <state x="354" y="438" width="909" height="739" key="find.popup" timestamp="1656116396166">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="354" y="438" width="909" height="739" key="find.popup/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656116396166" />
+    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup" timestamp="1656140310089">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656140310089" />
   </component>
 </project>

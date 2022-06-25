@@ -11,38 +11,20 @@ class AddressFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create();
+        /*$faker = Factory::create();
 
-        //First User
-        $address = new Address();
-        $address->setName('Ev Adresi');
-        $address->setUserId(1);
-        $address->setDistrict($faker->state);
-        $address->setCity($faker->city);
-        $address->setCountry($faker->country);
-        $address->getDetail($faker->address);
-        $manager->persist($address);
+        for ($i = 0; $i < 3; $i++) {
+            $user = $this->getReference(UserFixture::USER_REFERENCE . '-' . $i);
+            $address = new Address();
+            $address->setName('Ev Adresi');
+            $address->setUser($user);
+            $address->setDistrict($faker->state);
+            $address->setCity($faker->city);
+            $address->setCountry($faker->country);
+            $address->getDetail($faker->address);
+            $manager->persist($address);
+        }
 
-        //Second User
-        $address = new Address();
-        $address->setName('Ev Adresi');
-        $address->setUserId(2);
-        $address->setDistrict($faker->state);
-        $address->setCity($faker->city);
-        $address->setCountry($faker->country);
-        $address->getDetail($faker->address);
-        $manager->persist($address);
-
-        //Third User
-        $address = new Address();
-        $address->setName('İş Adresi');
-        $address->setUserId(2);
-        $address->setDistrict($faker->state);
-        $address->setCity($faker->city);
-        $address->setCountry($faker->country);
-        $address->getDetail($faker->address);
-        $manager->persist($address);
-
-        $manager->flush();
+        $manager->flush();*/
     }
 }

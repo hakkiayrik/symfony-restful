@@ -9,8 +9,12 @@ use Faker\Factory;
 
 class UserFixture extends Fixture
 {
+
+    public const USER_REFERENCE = 'address-user';
+
     public function load(ObjectManager $manager): void
     {
+
         $faker = Factory::create();
 
         for ($i = 0; $i < 3; $i++) {
@@ -18,10 +22,13 @@ class UserFixture extends Fixture
             $user->setFirstName($faker->firstName);
             $user->setLastName($faker->lastName);
             $user->setEmail($faker->email);
-            $user->setPassword(md5($faker->password));
+            $user->setPassword($faker->password);
+            $user->setRoles(['ROLE_USER']);
+            $user->setStatus(1);
             $manager->persist($user);
-        }
+            $manager->flush();
 
-        $manager->flush();
+            $this->addReference(self::USER_REFERENCE . '-' . $i, $user);
+        }
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,25 +23,10 @@ class Order
     /**
      * @ORM\Column(type="integer")
      */
-    private $user_id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $product_id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $address_id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $quantity;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default" : 1})
      */
     private $status;
 
@@ -58,46 +45,30 @@ class Order
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Address::class, inversedBy="orders")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $address;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="orders")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $product;
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserId(): ?int
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(int $user_id): self
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    public function getProductId(): ?int
-    {
-        return $this->product_id;
-    }
-
-    public function setProductId(int $product_id): self
-    {
-        $this->product_id = $product_id;
-
-        return $this;
-    }
-
-    public function getAddressId(): ?int
-    {
-        return $this->address_id;
-    }
-
-    public function setAddressId(int $address_id): self
-    {
-        $this->address_id = $address_id;
-
-        return $this;
-    }
 
     public function getQuantity(): ?int
     {
@@ -155,6 +126,55 @@ class Order
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function updatedTimestamps()
+    {
+        $this->setUpdatedAt(new \DateTime('now'));
+
+        if ($this->getCreatedAt() == null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

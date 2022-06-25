@@ -16,6 +16,7 @@ class ProductFixture extends Fixture
         for ($i = 0; $i < 3; $i++) {
             $product = new Product();
             $product->setName($faker->sentence(6, true));
+            $product->setBarcode($faker->ean13);
             $product->setDescription($faker->text(300));
             $product->setPrice($faker->randomFloat(NULL, 2000,50000));
             $product->setQuantity($faker->numberBetween(50,150));

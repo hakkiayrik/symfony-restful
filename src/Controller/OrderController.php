@@ -127,13 +127,12 @@ class OrderController extends AbstractController
         }
 
         //ShippingDate kontrolü
-        /*$obj = new \DateTime();
-        if(date('Y-m-d', $order->getShippingDate()) < date('Y-m-d')) {
+        if(date('Y-m-d H:i:s', strtotime($order->getShippingDate()->format('Y-m-d H:i:s'))) < date('Y-m-d H:i:s', strtotime('+12 hours', strtotime(date('Y-m-d H:i:s'))))) {
             return $this->json([
                 'status' => 0,
-                'message' => 'Ürün kargolanma süresi geçtiği için bu sipariş güncellenemez!',
+                'message' => 'Ürün kargolanma tarihi geçtiği için bu sipariş güncellenemez!',
             ]);
-        }*/
+        }
 
         $validate = $this->validationService->updateDataValidation($requestData);
 

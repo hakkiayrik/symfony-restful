@@ -21,7 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="222b0da3-f006-42a0-b771-76d87dadeea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AddressFixture.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +129,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/PhpstormProjects/symfony-restful" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -137,6 +138,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Projects\symfony-restful" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="symfony-restful" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -159,7 +165,7 @@
       <updated>1656008625137</updated>
       <workItem from="1656008626322" duration="17922000" />
       <workItem from="1656030153843" duration="15613000" />
-      <workItem from="1656112575462" duration="47038000" />
+      <workItem from="1656112575462" duration="49664000" />
     </task>
     <servers />
   </component>
@@ -206,10 +212,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1075" y="407" key="RollbackChangesDialog/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656110381389" />
-    <state x="93" y="100" width="1952" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1656160789674">
+    <state x="93" y="100" width="1952" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1656166497489">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="93" y="100" width="1952" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656160789674" />
+    <state x="93" y="100" width="1952" height="1217" key="com.intellij.history.integration.ui.views.FileHistoryDialog/2560.0.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1656166497489" />
     <state x="354" y="438" width="909" height="739" key="find.popup" timestamp="1656162831654">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
